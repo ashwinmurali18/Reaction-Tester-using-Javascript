@@ -1,0 +1,92 @@
+<script type="text/javascript">
+			var minTime = 100;
+			var maxTime = 0;
+			var point;
+			var turn =0;
+			var score= 0;
+			var timeTaken;
+			var start = new Date().getTime();
+		document.getElementById("begin").onclick = function() {
+			document.getElementById("begin").style.display ="none";
+			function getRandomColor()
+				{
+					var letters = '0123456789ABCDEF';
+					var color = '#';
+					for (var i = 0; i < 6; i++) {
+						color += letters[Math.floor(Math.random() * 16)];
+					  }
+					  return color;
+				}
+			function makeShapeAppear()
+			{
+				var top = Math.random() * 200;
+				var left = Math.random() * 900;
+				var width = (Math.random() * 200) + 100;
+				if((Math.random() > 0) && (Math.random() < 0.3))
+					{
+						document.getElementById("shape").style.borderRadius = "50%";
+						document.getElementById("shape").style.top = top + "px";
+						document.getElementById("shape").style.backgroundColor = getRandomColor();
+						document.getElementById("shape").style.width = width + "px";
+						document.getElementById("shape").style.height = width + "px";
+						document.getElementById("shape").style.left = left + "px";
+						document.getElementById("shape").style.display = "block" ;
+						start = new Date().getTime();
+					}
+				else if((Math.random() > 0.4) && (Math.random() < 0.6))
+					{
+						document.getElementById("shape").style.transform = "skew(20deg)";
+						//document.getElementById("shape").style.borderTop = "25px solid transparent";
+						//document.getElementById("shape").style.borderRight = "50px solid #555";
+						//document.getElementById("shape").style.borderBottom = "25px solid transparent";
+						document.getElementById("shape").style.width = "100px";
+						document.getElementById("shape").style.height = "50px";
+						document.getElementById("shape").style.backgroundColor = getRandomColor();
+						document.getElementById("shape").style.display = "block" ;
+						start = new Date().getTime();
+					}
+				else 
+				{
+					document.getElementById("shape").style.borderRadius = "0%";
+					document.getElementById("shape").style.top = top + "px";
+					document.getElementById("shape").style.backgroundColor = getRandomColor();
+					document.getElementById("shape").style.width = width + "px";
+					document.getElementById("shape").style.height = width + "px";
+					document.getElementById("shape").style.left = left + "px";
+					document.getElementById("shape").style.display = "block" ;
+					start = new Date().getTime();
+				}
+			}
+			function appearAfterDelay() 
+				{				
+					setTimeout(makeShapeAppear(), Math.random() * 2000 );
+				}
+			appearAfterDelay();
+			document.getElementById("shape").onclick = function()
+				{
+					document.getElementById("shape").style.display = "none";
+					var end = new Date().getTime();
+					timetaken = ((end - start)/1000);
+					if(timetaken < minTime){
+						minTime = timetaken; }
+					if(timetaken > maxTime) {
+						maxTime = timetaken; }
+					point = (timetaken * 100)/10;
+					score +=Math.floor(point);
+					turn+=1;
+					document.getElementById("timeTaken").innerHTML = timetaken + "s";
+					document.getElementById("minTime").innerHTML = minTime + "s";
+					document.getElementById("maxTime").innerHTML = maxTime + "s";
+					document.getElementById("score").innerHTML = score;
+					document.getElementById("turn").innerHTML = turn;
+					document.getElementById("shape").style.display = "none";
+					appearAfterDelay();
+				}
+						
+			}
+			document.getElementById("exit").onclick = function() {
+				document.getElementById("shape").style.display = "none";
+				document.write("Thank You for Playing...!" + " ");
+                document.write("Your Score was" + " " + score +" " +  "in" + " " + turn + " " + "turns!!!");
+            }
+		</script>
