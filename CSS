@@ -1,0 +1,21 @@
+<style type="text/css">
+			body{
+					font-family: sans-serif;
+                    font-weight: 200;   
+				}
+			#shape {
+						height:200px;
+						width:200px;
+						background-color:red;
+						display: none;
+						position:relative;
+					}
+			#bold {
+					font-weight: bold;
+				}
+			#exit {
+				position: fixed;
+				bottom: 470px;
+				right : 900px;
+				}
+		</style>
