@@ -2,5 +2,5 @@
 
 ## Screenshots
   ![Home](\home.png)
-  ![clickshapes]('clickshapes.png')
-  ![Exit]('exit.png')
+  ![clickshapes]('\clickshapes.png')
+  ![Exit]('\exit.png')
